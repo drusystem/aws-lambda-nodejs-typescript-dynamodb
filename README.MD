@@ -76,7 +76,7 @@ API "The Star Wars API" realizada en NodeJS bajo el framework serverless para de
 | `provider` | `string` | Se debe enviar el valor de **external_api** para que la API valide que debe obtener la data de SWAPI |
 
 ### Crear persona en DynamoDB
-```http
+```bash
   POST http://localhost:3000/peoples
 ```
 | Body | Type     | Description                |
