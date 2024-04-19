@@ -1,5 +1,6 @@
-import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import axios, {AxiosInstance, AxiosResponse } from 'axios';
 import { People, PeoplesResponse } from '../interfaces/peoplesResponses.interface';
+
 
 export class SwapiPeopleService {
   private axiosInstance: AxiosInstance;
@@ -22,6 +23,7 @@ export class SwapiPeopleService {
 
   async fetchDataById(id:string): Promise<People>{
     try {
+
       const response: AxiosResponse<People> = await this.axiosInstance.get(`/people/${id}`);
       return response.data;
     } catch (error) {

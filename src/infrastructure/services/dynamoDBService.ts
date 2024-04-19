@@ -20,7 +20,7 @@ export class DynamoDBService {
         }
       }
     
-    async getItem(params: DynamoDB.DocumentClient.GetItemInput): Promise<AWS.DynamoDB.DocumentClient.GetItemOutput> {
+    async getItem(params: DynamoDB.DocumentClient.GetItemInput): Promise<DynamoDB.DocumentClient.GetItemOutput> {
         try {
             return await this.dynamoDB.get(params).promise();
         } catch (error) {

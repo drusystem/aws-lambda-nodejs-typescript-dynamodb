@@ -14,7 +14,7 @@ export const postPeopleHandler:APIGatewayProxyHandler = async (event: APIGateway
             const errors = error.details.map(error => error.message);
             return {
                 statusCode: 400,
-                body: JSON.stringify({ error: errors }),
+                body: JSON.stringify({ message: errors }),
             };
         }
 

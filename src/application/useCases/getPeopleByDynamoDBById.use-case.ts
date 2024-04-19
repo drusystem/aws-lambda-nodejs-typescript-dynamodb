@@ -1,5 +1,5 @@
 import { PersonaEntity } from "../../domain/entities/personas.entity";
-import { NotFoundError } from "../../domain/exceptions/NotFoundError";
+import { NotFoundError } from "../../domain/exceptions/typeError/NotFoundError";
 import { PeopleRepository } from "../../infrastructure/repositories/peopleRepository";
 import { DynamoDBService } from "../../infrastructure/services/dynamoDBService";
 

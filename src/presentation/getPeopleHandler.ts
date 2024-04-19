@@ -1,6 +1,7 @@
 import { APIGatewayEvent, APIGatewayProxyHandler,APIGatewayProxyResult} from 'aws-lambda'
 import { getPeopleBySwapiByIdUseCase } from '../application/useCases/getPeopleBySwapiById.use-case';
 import { getPeopleByDynamoBDByIdUseCase } from '../application/useCases/getPeopleByDynamoDBById.use-case';
+import { AllExceptionsFilter } from '../domain/exceptions/AllExceptionsFilter';
 
 export const getPeopleHandler:APIGatewayProxyHandler = async (event: APIGatewayEvent): Promise<APIGatewayProxyResult> => {
     
@@ -24,9 +25,6 @@ export const getPeopleHandler:APIGatewayProxyHandler = async (event: APIGatewayE
             }),
         };
     } catch (error) {
-        return {
-            statusCode: 500,
-            body:  JSON.stringify({error:"Internal Error"})
-        };
+        return AllExceptionsFilter.typeError(error);
     }
 };

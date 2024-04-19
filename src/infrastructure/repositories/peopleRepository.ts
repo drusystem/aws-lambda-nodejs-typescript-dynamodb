@@ -11,10 +11,10 @@ export class PeopleRepository {
 
     async save(item: PersonaEntity): Promise<PersonaEntity> {
 
-      console.log(`LA TABLA ES: ${DYNAMODB_TABLE}`)
-
         const id = uuidv4();
         item.id = id;
+
+        console.log(item)
 
         const params: DynamoDB.DocumentClient.PutItemInput = {
           TableName: DYNAMODB_TABLE!,

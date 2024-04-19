@@ -1,5 +1,5 @@
 import { PersonaEntity } from "../../domain/entities/personas.entity";
-import { NotFoundError } from "../../domain/exceptions/NotFoundError";
+import { NotFoundError } from "../../domain/exceptions/typeError/NotFoundError";
 import { SwapiPeopleService } from "../../infrastructure/services/swapiPeopleService";
 import { PeopleMapper } from "../mappers/people.mapper";
 const { SWAPI_URL } = process.env;
