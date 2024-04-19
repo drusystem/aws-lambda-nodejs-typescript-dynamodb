@@ -31,11 +31,11 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "aws-sdk": "^2.1603.0",
+    "@aws-sdk/client-dynamodb": "^3.556.0",
+    "@aws-sdk/lib-dynamodb": "^3.556.0",
     "axios": "^1.6.8",
     "crypto": "^1.0.1",
     "joi": "^17.11.1",
-    "redis": "^4.6.12",
     "uuid": "^9.0.1"
   }
 }

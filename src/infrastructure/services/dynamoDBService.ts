@@ -1,33 +1,28 @@
-import { DynamoDB } from 'aws-sdk'
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
+import { PutCommand, DynamoDBDocumentClient,GetCommand, GetCommandOutput  } from "@aws-sdk/lib-dynamodb";
 const { STAGE } = process.env;
 
+const client = new DynamoDBClient(
+        STAGE==="dev"? {endpoint: 'http://localhost:8000'}:{}
+    );
+const docClient = DynamoDBDocumentClient.from(client);
+
 export class DynamoDBService {
-    private dynamoDB: DynamoDB.DocumentClient;
 
-    constructor() {
-        if(STAGE === "dev"){
-            this.dynamoDB = new DynamoDB.DocumentClient(
-                {
-                     endpoint: 'http://localhost:8000',
-                }
-              );
-        }else{
-            this.dynamoDB = new DynamoDB.DocumentClient()
-        }
-    }
-
-    async createItem(params: DynamoDB.DocumentClient.PutItemInput): Promise<void> {
+    async createItem(command:PutCommand): Promise<void> {
         try {
-            await this.dynamoDB.put(params).promise();
+            const response = await docClient.send(command);
+            console.log(response);
+  
         } catch (error) {
         console.error('Error al crear el registro en DynamoDB:', error);
             throw error;
         }
       }
     
-    async getItem(params: DynamoDB.DocumentClient.GetItemInput): Promise<DynamoDB.DocumentClient.GetItemOutput> {
+    async getItem(command: GetCommand): Promise<GetCommandOutput> {
         try {
-            return await this.dynamoDB.get(params).promise();
+            return  await docClient.send(command);
         } catch (error) {
         console.error('Error al obtener el registro de DynamoDB:', error);
             throw error;
