@@ -6,6 +6,15 @@
     ],
     "plugins": [
       "@typescript-eslint"
+    ],
+    "overrides": [
+      {
+        "files":["**/*.config.js","jest.config.js"],
+        "env": {
+          "node": true
+        }
+      }
     ]
+    
 }
   

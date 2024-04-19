@@ -14,8 +14,6 @@ export class PeopleRepository {
         const id = uuidv4();
         item.id = id;
 
-        console.log(item)
-
         const params: DynamoDB.DocumentClient.PutItemInput = {
           TableName: DYNAMODB_TABLE!,
           Item: item

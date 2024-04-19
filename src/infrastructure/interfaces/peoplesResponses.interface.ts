@@ -19,9 +19,9 @@ export interface People {
     species:    string[];
     vehicles:   string[];
     starships:  string[];
-    created:    Date;
-    edited:     Date;
-    url:        string;
+    // created:    Date;
+    // edited:     Date;
+    // url:        string;
 }
 
 export enum Gender {

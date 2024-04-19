@@ -21,7 +21,7 @@ export const getPeopleHandler:APIGatewayProxyHandler = async (event: APIGatewayE
         return {
             statusCode: 200,
             body: JSON.stringify({
-                resultado
+                data:resultado
             }),
         };
     } catch (error) {

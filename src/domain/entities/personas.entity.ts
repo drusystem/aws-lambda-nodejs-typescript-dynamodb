@@ -21,9 +21,9 @@ export interface PersonaEntity {
     especies:    string[];
     vehiculos:   string[];
     naves_estelares:  string[];
-    creado:    Date;
-    editado:     Date;
-    url:        string;
+    // creado:    Date;
+    // editado:     Date;
+    // url:        string;
 }
 
 export enum Gender {

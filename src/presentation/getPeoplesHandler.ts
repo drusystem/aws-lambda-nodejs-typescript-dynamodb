@@ -1,5 +1,6 @@
 import { APIGatewayProxyHandler,APIGatewayProxyResult} from 'aws-lambda'
 import { getPeoplesBySwapiUseCase } from '../application/useCases/getPeoplesBySwapi.use-case';
+import { AllExceptionsFilter } from '../domain/exceptions/AllExceptionsFilter';
 
 export const getPeoplesHandler:APIGatewayProxyHandler = async (): Promise<APIGatewayProxyResult> => {
     
@@ -9,13 +10,10 @@ export const getPeoplesHandler:APIGatewayProxyHandler = async (): Promise<APIGat
         return {
             statusCode: 200,
             body: JSON.stringify({
-                resultados
+                data:resultados
             }),
         };
     } catch (error) {
-        return {
-            statusCode: 500,
-            body:  JSON.stringify({error:"Internal Error"})
-        };
+        return AllExceptionsFilter.typeError(error);
     }
 };

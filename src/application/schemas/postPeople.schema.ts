@@ -28,8 +28,16 @@ export const postPeopleSchema = Joi.object({
     mundo_natal:Joi.string().required().messages({
         'any.required':'el campo [mundo_natal] es requerido'
     }),
-    // peliculas:Joi.array().items(Joi.string().uri()).required(),
-    // especies:Joi.array().items(Joi.string().uri()).required(),
-    // vehiculos:Joi.array().items(Joi.string().uri()).required(),
-    // naves_estelares:Joi.array().items(Joi.string().uri()).required(),
+    peliculas:Joi.array().items(Joi.string().uri()).required().messages({
+        'any.required':'el campo [peliculas] es requerido'
+    }),
+    especies:Joi.array().items(Joi.string().uri()).required().messages({
+        'any.required':'el campo [especies] es requerido'
+    }),
+    vehiculos:Joi.array().items(Joi.string().uri()).required().messages({
+        'any.required':'el campo [vehiculos] es requerido'
+    }),
+    naves_estelares:Joi.array().items(Joi.string().uri()).required().messages({
+        'any.required':'el campo [naves_estelares] es requerido'
+    }),
 });

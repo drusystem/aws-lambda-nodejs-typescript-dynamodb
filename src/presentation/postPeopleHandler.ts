@@ -1,6 +1,7 @@
 import { APIGatewayProxyHandler,APIGatewayEvent,APIGatewayProxyResult} from 'aws-lambda'
 import { postPeopleSchema } from '../application/schemas/postPeople.schema';
 import { createPeopleUseCase } from '../application/useCases/createPeople.use-case';
+import { AllExceptionsFilter } from '../domain/exceptions/AllExceptionsFilter';
 
 
 export const postPeopleHandler:APIGatewayProxyHandler = async (event: APIGatewayEvent): Promise<APIGatewayProxyResult> => {
@@ -23,13 +24,10 @@ export const postPeopleHandler:APIGatewayProxyHandler = async (event: APIGateway
         return {
             statusCode: 201,
             body: JSON.stringify({
-                personaCreada
+                data:personaCreada
             }),
         };
     } catch (error) {
-        return {
-            statusCode: 500,
-            body:  JSON.stringify({error:"Internal Error"})
-        };
+        return AllExceptionsFilter.typeError(error);
     }
 };
