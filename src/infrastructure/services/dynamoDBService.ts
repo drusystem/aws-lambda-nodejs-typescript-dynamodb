@@ -1,4 +1,5 @@
 import { DynamoDB } from 'aws-sdk'
+const { DYNAMODB_HOST } = process.env;
 
 export class DynamoDBService {
     private dynamoDB: DynamoDB.DocumentClient;
@@ -6,7 +7,7 @@ export class DynamoDBService {
     constructor() {
       this.dynamoDB = new DynamoDB.DocumentClient(
         {
-            endpoint: 'http://localhost:8000',
+            endpoint: DYNAMODB_HOST,
         }
       );
     }

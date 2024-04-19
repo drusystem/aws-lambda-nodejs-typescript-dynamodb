@@ -5,6 +5,7 @@ provider:
   runtime: nodejs18.x
   region: sa-east-1
   environment:
+    DYNAMODB_HOST: http://localhost:8000
     DYNAMODB_TABLE: ${self:service}-${sls:stage}
     SWAPI_URL: https://swapi.py4e.com/api
   httpApi:
