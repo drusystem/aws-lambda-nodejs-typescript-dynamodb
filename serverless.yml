@@ -5,7 +5,7 @@ provider:
   runtime: nodejs18.x
   region: sa-east-1
   environment:
-    DYNAMODB_HOST: http://localhost:8000
+    STAGE: ${sls:stage}
     DYNAMODB_TABLE: ${self:service}-${sls:stage}
     SWAPI_URL: https://swapi.py4e.com/api
   httpApi:
@@ -46,7 +46,7 @@ resources:
       Type: 'AWS::DynamoDB::Table'
       DeletionPolicy: Retain
       Properties:
-        # GroupDescription: "INDRA - Reto técnico"
+        GroupDescription: "INDRA - Reto técnico"
         AttributeDefinitions:
           -
             AttributeName: id

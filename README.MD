@@ -57,7 +57,7 @@ API "The Star Wars API" realizada en NodeJS bajo el framework serverless para de
 ```
 
 ## APIS disponibles
-### Obtener todas las personas
+### Listar personas de SWAPI
 ```http
   GET http://localhost:3000/peoples
 ```

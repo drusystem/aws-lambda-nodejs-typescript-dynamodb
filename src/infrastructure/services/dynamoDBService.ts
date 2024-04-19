@@ -1,15 +1,19 @@
 import { DynamoDB } from 'aws-sdk'
-const { DYNAMODB_HOST } = process.env;
+const { STAGE } = process.env;
 
 export class DynamoDBService {
     private dynamoDB: DynamoDB.DocumentClient;
 
     constructor() {
-      this.dynamoDB = new DynamoDB.DocumentClient(
-        {
-            endpoint: DYNAMODB_HOST,
+        if(STAGE === "dev"){
+            this.dynamoDB = new DynamoDB.DocumentClient(
+                {
+                     endpoint: 'http://localhost:8000',
+                }
+              );
+        }else{
+            this.dynamoDB = new DynamoDB.DocumentClient()
         }
-      );
     }
 
     async createItem(params: DynamoDB.DocumentClient.PutItemInput): Promise<void> {

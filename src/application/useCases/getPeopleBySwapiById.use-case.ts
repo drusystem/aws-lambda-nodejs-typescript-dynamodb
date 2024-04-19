@@ -13,5 +13,6 @@ export const getPeopleBySwapiByIdUseCase = async (id:string): Promise<PersonaEnt
     }
 
     const resultadoMapeado = PeopleMapper.fromSwapiPeopleToEntity(result)
+    resultadoMapeado.id = id;
     return resultadoMapeado;
 };
