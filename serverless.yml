@@ -20,6 +20,7 @@ provider:
             - dynamodb:PutItem
             - dynamodb:UpdateItem
             - dynamodb:DeleteItem
+            - dynamodb:CreateTable
           Resource: "arn:aws:dynamodb:${aws:region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
 
 functions:
@@ -38,24 +39,13 @@ functions:
     events:
       - httpApi: POST /peoples
 
-  # retrieveCardData:
-  #   handler: src/presentation/retrieveCardDataHandler.retrieveCardDataHandler
-  #   events:
-  #     - httpApi: POST /retrieveCardData
-  #   vpc:
-  #     securityGroupIds:
-  #       - !GetAtt MyLambdaSecurityGroup.GroupId
-  #     subnetIds:
-  #       - !Ref MySubnet
-
 resources:
   Resources:
-
     SwapiDynamoDbTable:
       Type: 'AWS::DynamoDB::Table'
       DeletionPolicy: Retain
       Properties:
-        GroupDescription: "INDRA - Reto técnico"
+        # GroupDescription: "INDRA - Reto técnico"
         AttributeDefinitions:
           -
             AttributeName: id

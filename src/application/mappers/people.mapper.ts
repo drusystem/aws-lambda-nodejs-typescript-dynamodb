@@ -5,6 +5,7 @@ import { People } from "../../infrastructure/interfaces/peoplesResponses.interfa
 export class PeopleMapper{
     static fromSwapiPeopleToEntity(people:People):PersonaEntity{
         return {
+            id:'--',
             nombre:people.name,
             altura:people.height,
             masa:people.mass,
