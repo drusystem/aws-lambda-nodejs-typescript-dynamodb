@@ -15,7 +15,7 @@ export interface PersonaEntity {
     color_piel:string;
     color_ojos:string;
     anio_nacimiento:string;
-    genero:Gender;
+    genero:string;
     mundo_natal:string;
     peliculas:      string[];
     especies:    string[];
@@ -24,10 +24,4 @@ export interface PersonaEntity {
     // creado:    Date;
     // editado:     Date;
     // url:        string;
-}
-
-export enum Gender {
-    Female = "female",
-    Male = "male",
-    NA = "n/a",
 }
