@@ -4,11 +4,11 @@
 API "The Star Wars API" realizada en NodeJS bajo el framework serverless para despliegue en AWS.
 
 
-## Requisitos previos
+## Prerequisitos
 
-- Tener configurado el usuario AWS CLI con los permisos correspondientes.
 - Tener instalador Docker para DynamoDB en local.
-
+- Tener configurado el usuario AWS CLI con los permisos correspondientes.
+![IAM Permisos](./image/permisos_iam.png)
 
 ## Ejecutar proyecto localmente
 
@@ -41,7 +41,7 @@ API "The Star Wars API" realizada en NodeJS bajo el framework serverless para de
 
 ### Configurar variables de entorno en el archivo "serverless.yml"
 ```bash
-  DYNAMODB_HOST: http://localhost:8000
+  STAGE: ${sls:stage}
   DYNAMODB_TABLE: ${self:service}-${sls:stage}
   SWAPI_URL: https://swapi.py4e.com/api
 ```
@@ -58,16 +58,16 @@ API "The Star Wars API" realizada en NodeJS bajo el framework serverless para de
 
 ## APIS disponibles
 ### Listar personas de SWAPI
-```http
+```bash
   GET http://localhost:3000/peoples
 ```
 ### Obtener una persona por id de DynamoDB
-```http
+```bash
   GET http://localhost:3000/peoples/${id}
 ```
 
 ### Obtener una persona por id de SWAPI
-```http
+```bash
   GET http://localhost:3000/peoples/${id}
 ```
 
@@ -94,6 +94,23 @@ API "The Star Wars API" realizada en NodeJS bajo el framework serverless para de
 | `especies` | `array[string]` | Campo **Requerido** |
 | `vehiculos` | `array[string]` | Campo **Requerido** |
 | `naves_estelares` | `array[string]` | Campo **Requerido** |
+
+
+## Producción
+
+### Despliegue
+  Antes de ejecutar el deploy, verificar se cumpla los requisitos previos definido en la sección Prerequisitos respecto a los permisos IAM del usuario asignado al AWS-CLI.
+```bash
+  npm run deploy
+```
+![Despliegue lambda](./image/deploy.png)
+
+### Desistalación
+  Al remover las funciones lambda, se retirará todos los servicios relacionados a ello que fueron creados por el deploy.
+```bash
+  npm run remove
+```
+
 
 ## Autor
 

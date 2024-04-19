@@ -10,19 +10,6 @@ provider:
     SWAPI_URL: https://swapi.py4e.com/api
   httpApi:
     cors: true
-  iam:
-    role:
-      statements:
-        - Effect: Allow
-          Action:
-            - dynamodb:Query
-            - dynamodb:Scan
-            - dynamodb:GetItem
-            - dynamodb:PutItem
-            - dynamodb:UpdateItem
-            - dynamodb:DeleteItem
-            - dynamodb:CreateTable
-          Resource: "arn:aws:dynamodb:${aws:region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
 
 functions:
   list:
@@ -44,9 +31,8 @@ resources:
   Resources:
     SwapiDynamoDbTable:
       Type: 'AWS::DynamoDB::Table'
-      DeletionPolicy: Retain
+      DeletionPolicy: Delete
       Properties:
-        GroupDescription: "INDRA - Reto técnico"
         AttributeDefinitions:
           -
             AttributeName: id
