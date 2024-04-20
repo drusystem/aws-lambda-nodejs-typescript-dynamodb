@@ -50,11 +50,6 @@ API "The Star Wars API" realizada en NodeJS bajo el framework serverless para de
 ```bash
   npm run start
 ```
-### Opcional
-  Generar el build de la aplicación ( dist / .serverless)
-```bash
-  npm run build
-```
 
 ## APIS disponibles
 ### Listar personas de SWAPI
@@ -97,6 +92,12 @@ API "The Star Wars API" realizada en NodeJS bajo el framework serverless para de
 
 
 ## Producción
+
+### Generar package
+  Generar el build de la aplicación ( dist / .serverless)
+```bash
+  npm run build
+```
 
 ### Despliegue
   Antes de ejecutar el deploy, verificar se cumpla los requisitos previos definido en la sección Prerequisitos respecto a los permisos IAM del usuario asignado al AWS-CLI.
